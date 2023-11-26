@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Password Generator</h1>
+    </header>
+    <main>
+      <section class="criteriaUser">
+        <p>Select the amount of characters:</p>
+        <select name="numChar" id="characters">
+          <option value=""></option>
+        </select>
+        <p>Select the following password criteria:</p>
+        <div class="checkCriteria">
+          <div class="inputBoxes">
+            <p>
+              <input
+                type="checkbox"
+                name="typeCharacter"
+                id="characterLowercase"
+                value="lowerCaseCharacters"
+              />Lowercase: a, b....
+            </p>
+            <p>
+              <input
+                type="checkbox"
+                name="typeCharacter"
+                id="characterUppercase"
+                value="upperCaseCharacters"
+              />upperCase: A, B....
+            </p>
+            <p>
+              <input
+                type="checkbox"
+                name="typeCharacter"
+                id="characterNumbers"
+                value="numbersCharacters"
+              />Numbers: 0,1,2...
+            </p>
+
+            <p>
+              <input
+                type="checkbox"
+                name="typeCharacter"
+                id="characterSymbols"
+                value="symbolCharacters"
+              />Symbols: %, $, #...
+            </p>
+          </div>
+        </div>
+
+        <p>
+          <button id="generate" class="button-21">Generate Password</button>
+        </p>
+        <p>
+          <textarea
+            readonly
+            name=""
+            id="userPassword"
+            cols="30"
+            rows="4"
+            class="userPassword1"
+          ></textarea>
+        </p>
+        <p id="charactersSelected"></p>
+        <p id="userCriteria"></p>
+      </section>
+    </main>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
