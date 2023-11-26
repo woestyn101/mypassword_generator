@@ -28,7 +28,7 @@ var arrayNumbers = [0,1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9];
 
 document.getElementById("generate").onclick = function(){
     var selectedChar = document.getElementById("characters").value;
-   // document.getElementById("charactersSelected").innerHTML = selectedChar;    
+  selectedChar;    
 
     var arrayCriteria = [];
     var criteria = document.querySelectorAll(
@@ -206,7 +206,9 @@ document.getElementById("generate").onclick = function(){
                         passwordArray = passwordArray.filter( ( character ) => !arraySymbols.includes( character ) );
                         }
     
-    
+    //last shuffle of password
+    passwordArray = shuffleArray(passwordArray);     
+
     // join password array together in a string
     passwordArray = passwordArray.join('');
     document.getElementById("userPassword").innerHTML = passwordArray;
@@ -217,4 +219,4 @@ document.getElementById("generate").onclick = function(){
 
 // sources:
 
-//https://stackoverflow.com/questions/19957348/remove-all-elements-contained-in-another-array
+//
