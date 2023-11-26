@@ -45,37 +45,53 @@ document.getElementById("generate").onclick = function(){
     
     var passwordArray = [];
 
-    
+    var choseLower = true;
+    var choseUpper = true;
+    var choseNumber = true;
+    var choseSymbol = true;
 
     if (arrayCriteria.includes("lowerCaseCharacters")){
         console.log("yes a,b,c");
         passwordArray = passwordArray.concat(arrayLetters);
+        choseLower = true;
     } else {
         console.log("no a,b,c")
+        choseLower = false;
     }
-
+   console.log(choseLower);
     console.log(passwordArray);
 
     if (arrayCriteria.includes("upperCaseCharacters")){
         console.log("yes ABC");
         passwordArray = passwordArray.concat(arrayLettersUpper);
+        choseUpper = true;
     } else {
         console.log("no ABC")
+        choseUpper = false;
     }
+    console.log(choseUpper);
 
     if (arrayCriteria.includes("numbersCharacters")){
         console.log("yes 1,2,3");
         passwordArray = passwordArray.concat(arrayNumbers);
+        choseNumber = true;
     } else {
         console.log("no 1,2,3")
+        choseNumber = false;
     }
+
+    console.log(choseNumber);
 
     if (arrayCriteria.includes("symbolCharacters")){
         console.log("yes $");
         passwordArray = passwordArray.concat(arraySymbols);
+        choseSymbol = true;
     } else {
         console.log("no $")
+        choseSymbol = false;
     }
+
+    console.log(choseSymbol)
 
     //function to shuffle arrays
 
@@ -95,8 +111,14 @@ document.getElementById("generate").onclick = function(){
     console.log(selectedChar);
      //reduce password to amount of characters specified by user
     passwordArray = passwordArray.slice(0, selectedChar);
+
+    // validation for lowerCase letters
+    
+    
     // join password array together in a string
     passwordArray = passwordArray.join('');
     document.getElementById("userPassword").innerHTML = passwordArray;
     console.log(passwordArray);
-    }
+
+}
+    
