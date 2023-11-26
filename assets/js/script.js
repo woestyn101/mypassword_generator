@@ -28,7 +28,7 @@ var arrayNumbers = [0,1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9];
 
 document.getElementById("generate").onclick = function(){
     var selectedChar = document.getElementById("characters").value;
-    document.getElementById("charactersSelected").innerHTML = selectedChar;    
+   // document.getElementById("charactersSelected").innerHTML = selectedChar;    
 
     var arrayCriteria = [];
     var criteria = document.querySelectorAll(
