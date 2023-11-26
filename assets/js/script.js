@@ -103,6 +103,12 @@ document.getElementById("generate").onclick = function(){
      
         shuffleArray(passwordArray);
 
+        //function to shuffle array and return one element
+       function shuffleArrayReturnOne(array) {
+        array = array.sort(() => 0.5 - Math.random());     
+        return array[0];
+      }
+
          //reduce password to amount of characters specified by user
 
       
@@ -112,9 +118,30 @@ document.getElementById("generate").onclick = function(){
      //reduce password to amount of characters specified by user
     passwordArray = passwordArray.slice(0, selectedChar);
 
+    //validation variables
+    var containsLower = true;
+
     // validation for lowerCase letters
-    
-    
+    if (passwordArray.some((character) => arrayLetters.includes(character))){
+        console.log("contains abc");
+        containsLower = true;
+    }  else {
+        containsLower= false;
+    }
+    console.log(containsLower);
+    console.log(!choseLower);
+    console.log(!containsLower);
+
+    // validation for both criteria and end password
+
+    if (choseLower && !containsLower){
+        console.log("chose but does not contain lower")
+       var newLetter = shuffleArrayReturnOne(arrayLetters);
+       passwordArray.splice(0, 1, newLetter);
+    }else if (!choseLower && containsLower){
+        console.log("not chose lower but contains lower")
+    }
+        
     // join password array together in a string
     passwordArray = passwordArray.join('');
     document.getElementById("userPassword").innerHTML = passwordArray;
