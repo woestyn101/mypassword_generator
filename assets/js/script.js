@@ -38,7 +38,7 @@ document.getElementById("generate").onclick = function(){
     for (var i = 0; i < criteria.length; i++) {
       arrayCriteria.push(criteria[i].value);
     }
-    console.log(arrayCriteria);
+    
 
     // document.getElementById("userCriteria").innerHTML = arrayCriteria;
     
@@ -58,8 +58,7 @@ document.getElementById("generate").onclick = function(){
         console.log("no a,b,c")
         choseLower = false;
     }
-   console.log(choseLower);
-    console.log(passwordArray);
+   
 
     if (arrayCriteria.includes("upperCaseCharacters")){
         console.log("yes ABC");
@@ -69,7 +68,7 @@ document.getElementById("generate").onclick = function(){
         console.log("no ABC")
         choseUpper = false;
     }
-    console.log(choseUpper);
+    
 
     if (arrayCriteria.includes("numbersCharacters")){
         console.log("yes 1,2,3");
@@ -80,7 +79,7 @@ document.getElementById("generate").onclick = function(){
         choseNumber = false;
     }
 
-    console.log(choseNumber);
+   
 
     if (arrayCriteria.includes("symbolCharacters")){
         console.log("yes $");
@@ -91,7 +90,7 @@ document.getElementById("generate").onclick = function(){
         choseSymbol = false;
     }
 
-    console.log(choseSymbol)
+   
 
     //function to shuffle arrays
 
@@ -113,13 +112,15 @@ document.getElementById("generate").onclick = function(){
 
       
 
-    console.log(passwordArray);
-    console.log(selectedChar);
+    
      //reduce password to amount of characters specified by user
     passwordArray = passwordArray.slice(0, selectedChar);
 
     //validation variables
     var containsLower = true;
+    var containsUpper = true;
+    var containsNumbers = true;
+    var containsSymbols = true;
 
     // validation for lowerCase letters
     if (passwordArray.some((character) => arrayLetters.includes(character))){
@@ -128,20 +129,84 @@ document.getElementById("generate").onclick = function(){
     }  else {
         containsLower= false;
     }
-    console.log(containsLower);
-    console.log(!choseLower);
-    console.log(!containsLower);
+   
 
-    // validation for both criteria and end password
+    // validation:lowercase for both criteria and end password
 
     if (choseLower && !containsLower){
         console.log("chose but does not contain lower")
        var newLetter = shuffleArrayReturnOne(arrayLetters);
+       console.log(newLetter);
        passwordArray.splice(0, 1, newLetter);
     }else if (!choseLower && containsLower){
         console.log("not chose lower but contains lower")
-    }
+        passwordArray = passwordArray.filter( ( character ) => !arrayLetters.includes( character ) );
+        }
         
+        // validation for upperCase letters
+        if (passwordArray.some((character) => arrayLettersUpper.includes(character))){
+            console.log("contains ABC");
+            containsUpper = true;
+        }  else {
+            containsUpper= false;
+        }
+        
+
+        // validation:upperCase for both criteria and end password
+
+        if (choseUpper && !containsUpper){
+            console.log("chose but does not contain Upper")
+            var newLetter = shuffleArrayReturnOne(arrayLettersUpper);
+            console.log(newLetter);
+            passwordArray.splice(1, 1, newLetter);
+            }else if (!choseUpper && containsUpper){
+                console.log("not chose Upper but contains Upper")
+                passwordArray = passwordArray.filter( ( character ) => !arrayLettersUpper.includes( character ) );
+                }
+
+                // validation for numbers
+                if (passwordArray.some((character) => arrayNumbers.includes(character))){
+                    console.log("contains 123");
+                    containsNumbers = true;
+                }  else {
+                    containsNumbers= false;
+                }
+        
+
+        // validation: Numbers for both criteria and end password
+
+            if (choseNumber && !containsNumbers){
+                console.log("chose but does not contain Numbers")
+                var newLetter = shuffleArrayReturnOne(arrayNumbers);
+                console.log(newLetter);
+                passwordArray.splice(2, 1, newLetter);
+                }else if (!choseNumber && containsNumbers){
+                    console.log("not chose Number but contains Number")
+                    passwordArray = passwordArray.filter( ( character ) => !arrayNumbers.includes( character ) );
+                    }
+
+                       // validation for Symbols
+                if (passwordArray.some((character) => arraySymbols.includes(character))){
+                    console.log("contains %");
+                    containsSymbols = true;
+                }  else {
+                    containsSymbols= false;
+                }
+        
+
+             // validation:Symbols for both criteria and end password
+
+                if (choseSymbol && !containsSymbols){
+                    console.log("chose but does not contain Symbol")
+                    var newLetter = shuffleArrayReturnOne(arraySymbols);
+                    console.log(newLetter);
+                    passwordArray.splice(3, 1, newLetter);
+                    }else if (!choseSymbol && containsSymbols){
+                        console.log("not chose Symbol but contains Symbol")
+                        passwordArray = passwordArray.filter( ( character ) => !arraySymbols.includes( character ) );
+                        }
+    
+    
     // join password array together in a string
     passwordArray = passwordArray.join('');
     document.getElementById("userPassword").innerHTML = passwordArray;
@@ -149,3 +214,7 @@ document.getElementById("generate").onclick = function(){
 
 }
     
+
+// sources:
+
+//https://stackoverflow.com/questions/19957348/remove-all-elements-contained-in-another-array
