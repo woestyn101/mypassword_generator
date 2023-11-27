@@ -117,18 +117,18 @@ document.getElementById("generate").onclick = function(){
     passwordArray = passwordArray.slice(0, selectedChar);
 
     //validation variables
-    var containsLower = true;
-    var containsUpper = true;
-    var containsNumbers = true;
-    var containsSymbols = true;
+    var containsLower = passwordArray.some((character) => arrayLetters.includes(character));
+    var containsUpper = passwordArray.some((character) => arrayLettersUpper.includes(character));
+    var containsNumbers = passwordArray.some((character) => arrayNumbers.includes(character));
+    var containsSymbols = passwordArray.some((character) => arraySymbols.includes(character));
 
     // validation for lowerCase letters
-    if (passwordArray.some((character) => arrayLetters.includes(character))){
-        console.log("contains abc");
-        containsLower = true;
-    }  else {
-        containsLower= false;
-    }
+    // if (passwordArray.some((character) => arrayLetters.includes(character))){
+    //     console.log("contains abc");
+    //     containsLower = true;
+    // }  else {
+    //     containsLower= false;
+    // }
    
 
     // validation:lowercase for both criteria and end password
@@ -144,12 +144,12 @@ document.getElementById("generate").onclick = function(){
         }
         
         // validation for upperCase letters
-        if (passwordArray.some((character) => arrayLettersUpper.includes(character))){
-            console.log("contains ABC");
-            containsUpper = true;
-        }  else {
-            containsUpper= false;
-        }
+        // if (passwordArray.some((character) => arrayLettersUpper.includes(character))){
+        //     console.log("contains ABC");
+        //     containsUpper = true;
+        // }  else {
+        //     containsUpper= false;
+        // }
         
 
         // validation:upperCase for both criteria and end password
@@ -165,12 +165,12 @@ document.getElementById("generate").onclick = function(){
                 }
 
                 // validation for numbers
-                if (passwordArray.some((character) => arrayNumbers.includes(character))){
-                    console.log("contains 123");
-                    containsNumbers = true;
-                }  else {
-                    containsNumbers= false;
-                }
+                // if (passwordArray.some((character) => arrayNumbers.includes(character))){
+                //     console.log("contains 123");
+                //     containsNumbers = true;
+                // }  else {
+                //     containsNumbers= false;
+                // }
         
 
         // validation: Numbers for both criteria and end password
@@ -186,12 +186,12 @@ document.getElementById("generate").onclick = function(){
                     }
 
                        // validation for Symbols
-                if (passwordArray.some((character) => arraySymbols.includes(character))){
-                    console.log("contains %");
-                    containsSymbols = true;
-                }  else {
-                    containsSymbols= false;
-                }
+                // if (passwordArray.some((character) => arraySymbols.includes(character))){
+                //     console.log("contains %");
+                //     containsSymbols = true;
+                // }  else {
+                //     containsSymbols= false;
+                // }
         
 
              // validation:Symbols for both criteria and end password
