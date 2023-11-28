@@ -1,5 +1,5 @@
 
-// drop down list of numbers 1 to 1128
+// drop down list of numbers 1 to 128
 
 
 var contents;
@@ -9,19 +9,23 @@ for (let i=8;i<= 128; i++){
     contents +="<option>"+ i + "</option>";
 
 }
+
+// output the dropdown list number to html
 amountCharacters.innerHTML = contents;
-// console.log("this is working:");
+
 
 // declaring criteria variables
-
+// set lowercase array
 var arrayLetters =  ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k","l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" ];
 
-
+//set uppercase array
 var arrayLettersUpper = arrayLetters.map(item => item.toUpperCase());
 
+//set symbols array
 var arraySymbols = ['!',  "#", "$", "%", "&","'","(", ")", "*", "+","-", ".", "/",":",";", "<","=", ">", "?", "@" , "^", "~", "{", "}"];
 ;
 
+//set nubmers array
 var arrayNumbers = [0,1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9];
 
 //button code to generate password
@@ -29,7 +33,7 @@ var arrayNumbers = [0,1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9];
 document.getElementById("generate").onclick = function(){
     var selectedChar = document.getElementById("characters").value;
   selectedChar;    
-
+  //get criteria by user and push it to array
     var arrayCriteria = [];
     var criteria = document.querySelectorAll(
       "input[type=checkbox]:checked"
@@ -40,53 +44,58 @@ document.getElementById("generate").onclick = function(){
     }
     
 
-    // document.getElementById("userCriteria").innerHTML = arrayCriteria;
+   
     
-    
+    // declare main password variable
     var passwordArray = [];
 
+      // declaring boolean  values for user criteria selected
     var choseLower = true;
     var choseUpper = true;
     var choseNumber = true;
     var choseSymbol = true;
 
+    //setting boolean value if lowercase chosen
+
     if (arrayCriteria.includes("lowerCaseCharacters")){
-        console.log("yes a,b,c");
+       
         passwordArray = passwordArray.concat(arrayLetters);
         choseLower = true;
     } else {
-        console.log("no a,b,c")
+        
         choseLower = false;
     }
-   
+
+    //setting boolean value if Uppercase chosen
+
 
     if (arrayCriteria.includes("upperCaseCharacters")){
-        console.log("yes ABC");
+      
         passwordArray = passwordArray.concat(arrayLettersUpper);
         choseUpper = true;
     } else {
-        console.log("no ABC")
+       
         choseUpper = false;
     }
     
-
+    //setting boolean value if numbers chosen
     if (arrayCriteria.includes("numbersCharacters")){
-        console.log("yes 1,2,3");
+       
         passwordArray = passwordArray.concat(arrayNumbers);
         choseNumber = true;
     } else {
-        console.log("no 1,2,3")
+       
         choseNumber = false;
     }
 
-   
+   //setting boolean value if special characters chosen
 
     if (arrayCriteria.includes("symbolCharacters")){
-        console.log("yes $");
+        
         passwordArray = passwordArray.concat(arraySymbols);
         choseSymbol = true;
     } else {
-        console.log("no $")
+       
         choseSymbol = false;
     }
 
@@ -100,6 +109,7 @@ document.getElementById("generate").onclick = function(){
             return array;
         }
      
+        //calling the function to shuffle password array
         shuffleArray(passwordArray);
 
         //function to shuffle array and return one element
@@ -108,28 +118,19 @@ document.getElementById("generate").onclick = function(){
         return array[0];
       }
 
-         //reduce password to amount of characters specified by user
-
-      
+              
 
     
      //reduce password to amount of characters specified by user
     passwordArray = passwordArray.slice(0, selectedChar);
 
-    //validation variables
+    //validation variables if password array includes criteria
     var containsLower = passwordArray.some((character) => arrayLetters.includes(character));
     var containsUpper = passwordArray.some((character) => arrayLettersUpper.includes(character));
     var containsNumbers = passwordArray.some((character) => arrayNumbers.includes(character));
     var containsSymbols = passwordArray.some((character) => arraySymbols.includes(character));
 
-    // validation for lowerCase letters
-    // if (passwordArray.some((character) => arrayLetters.includes(character))){
-    //     console.log("contains abc");
-    //     containsLower = true;
-    // }  else {
-    //     containsLower= false;
-    // }
-   
+      
 
     // validation:lowercase for both criteria and end password
 
@@ -143,14 +144,7 @@ document.getElementById("generate").onclick = function(){
         passwordArray = passwordArray.filter( ( character ) => !arrayLetters.includes( character ) );
         }
         
-        // validation for upperCase letters
-        // if (passwordArray.some((character) => arrayLettersUpper.includes(character))){
-        //     console.log("contains ABC");
-        //     containsUpper = true;
-        // }  else {
-        //     containsUpper= false;
-        // }
-        
+                
 
         // validation:upperCase for both criteria and end password
 
@@ -164,14 +158,7 @@ document.getElementById("generate").onclick = function(){
                 passwordArray = passwordArray.filter( ( character ) => !arrayLettersUpper.includes( character ) );
                 }
 
-                // validation for numbers
-                // if (passwordArray.some((character) => arrayNumbers.includes(character))){
-                //     console.log("contains 123");
-                //     containsNumbers = true;
-                // }  else {
-                //     containsNumbers= false;
-                // }
-        
+                       
 
         // validation: Numbers for both criteria and end password
 
@@ -185,14 +172,7 @@ document.getElementById("generate").onclick = function(){
                     passwordArray = passwordArray.filter( ( character ) => !arrayNumbers.includes( character ) );
                     }
 
-                       // validation for Symbols
-                // if (passwordArray.some((character) => arraySymbols.includes(character))){
-                //     console.log("contains %");
-                //     containsSymbols = true;
-                // }  else {
-                //     containsSymbols= false;
-                // }
-        
+                              
 
              // validation:Symbols for both criteria and end password
 
@@ -206,13 +186,15 @@ document.getElementById("generate").onclick = function(){
                         passwordArray = passwordArray.filter( ( character ) => !arraySymbols.includes( character ) );
                         }
     
-    //last shuffle of password
-    passwordArray = shuffleArray(passwordArray);     
+            //last shuffle of password
+            passwordArray = shuffleArray(passwordArray);     
 
-    // join password array together in a string
-    passwordArray = passwordArray.join('');
-    document.getElementById("userPassword").innerHTML = passwordArray;
-    console.log(passwordArray);
+            // join password array together in a string
+            passwordArray = passwordArray.join('');
+
+            //outputting password to html 
+            document.getElementById("userPassword").innerHTML = passwordArray;
+            console.log(passwordArray);
 
 }
     
