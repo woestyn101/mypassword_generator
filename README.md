@@ -10,6 +10,7 @@ During this project I learned how to use javascript:
 - to validating input from the user.
 - implementing conditional statements
 - to ouput a variable to a html page.
+- and array methods: splice(), filter(), includes
 
 ## Link to website
 
