@@ -133,14 +133,16 @@ document.getElementById("generate").onclick = function(){
       
 
     // validation:lowercase for both criteria and final password
+    //if password does not contain criteria, push at least one of the
+    // with the chosed characters to password
 
     if (choseLower && !containsLower){
-        console.log("chose but does not contain lower")
+        // insert character if chosen but not found
        var newLetter = shuffleArrayReturnOne(arrayLetters);
-       console.log(newLetter);
-       passwordArray.splice(0, 1, newLetter);
+        passwordArray.splice(0, 1, newLetter);
+
     }else if (!choseLower && containsLower){
-        console.log("not chose lower but contains lower")
+         //remove characters if not chosen
         passwordArray = passwordArray.filter( ( character ) => !arrayLetters.includes( character ) );
         }
         
@@ -149,12 +151,11 @@ document.getElementById("generate").onclick = function(){
         // validation:upperCase for both criteria and final password
 
         if (choseUpper && !containsUpper){
-            console.log("chose but does not contain Upper")
+              // insert character if chosen but not found
             var newLetter = shuffleArrayReturnOne(arrayLettersUpper);
-            console.log(newLetter);
             passwordArray.splice(1, 1, newLetter);
             }else if (!choseUpper && containsUpper){
-                console.log("not chose Upper but contains Upper")
+                //remove characters if not chosen
                 passwordArray = passwordArray.filter( ( character ) => !arrayLettersUpper.includes( character ) );
                 }
 
@@ -163,12 +164,12 @@ document.getElementById("generate").onclick = function(){
         // validation: Numbers for both criteria and final password
 
             if (choseNumber && !containsNumbers){
-                console.log("chose but does not contain Numbers")
+                  // insert character if chosen but not found
                 var newLetter = shuffleArrayReturnOne(arrayNumbers);
                 console.log(newLetter);
                 passwordArray.splice(2, 1, newLetter);
                 }else if (!choseNumber && containsNumbers){
-                    console.log("not chose Number but contains Number")
+                    //remove characters if not chosen
                     passwordArray = passwordArray.filter( ( character ) => !arrayNumbers.includes( character ) );
                     }
 
@@ -177,12 +178,11 @@ document.getElementById("generate").onclick = function(){
              // validation:Symbols for both criteria and final password
 
                 if (choseSymbol && !containsSymbols){
-                    console.log("chose but does not contain Symbol")
+                      // insert character if chosen but not found
                     var newLetter = shuffleArrayReturnOne(arraySymbols);
-                    console.log(newLetter);
-                    passwordArray.splice(3, 1, newLetter);
+                     passwordArray.splice(3, 1, newLetter);
                     }else if (!choseSymbol && containsSymbols){
-                        console.log("not chose Symbol but contains Symbol")
+                       //remove characters if not chosen
                         passwordArray = passwordArray.filter( ( character ) => !arraySymbols.includes( character ) );
                         }
     
@@ -199,6 +199,3 @@ document.getElementById("generate").onclick = function(){
 }
     
 
-// sources:
-
-//
