@@ -132,7 +132,7 @@ document.getElementById("generate").onclick = function(){
 
       
 
-    // validation:lowercase for both criteria and end password
+    // validation:lowercase for both criteria and final password
 
     if (choseLower && !containsLower){
         console.log("chose but does not contain lower")
@@ -146,7 +146,7 @@ document.getElementById("generate").onclick = function(){
         
                 
 
-        // validation:upperCase for both criteria and end password
+        // validation:upperCase for both criteria and final password
 
         if (choseUpper && !containsUpper){
             console.log("chose but does not contain Upper")
@@ -160,7 +160,7 @@ document.getElementById("generate").onclick = function(){
 
                        
 
-        // validation: Numbers for both criteria and end password
+        // validation: Numbers for both criteria and final password
 
             if (choseNumber && !containsNumbers){
                 console.log("chose but does not contain Numbers")
@@ -174,7 +174,7 @@ document.getElementById("generate").onclick = function(){
 
                               
 
-             // validation:Symbols for both criteria and end password
+             // validation:Symbols for both criteria and final password
 
                 if (choseSymbol && !containsSymbols){
                     console.log("chose but does not contain Symbol")
